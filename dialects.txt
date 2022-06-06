@@ -1,0 +1,40 @@
+- the eight commands
+- other characters ignored (= comments)
+- ip incremented after each command, except cases of [, ]
+- ip, dp
+- 30k linear data space (most common, alt. unlimited)
+- data initialized to zero, dp at 0(left)
+- dp below 0: ignore and undefined behaviour (most common), error and halt, extend dynamically, wrap around
+- ip starts at 1st command
+- program ends if ip points after last command
+- ASCII input stream
+- ASCII output stream
+- every [ and ] match each other? syntax error if not (interpreter warning)
+- EOL / Newline: only 10 ("\n", Unix/MacOS/Amiga, Standard), alt. 13+10 (Windows)
+- EOF at input: no change at dp (original U.M.) / 0 at dp / const EOF at dp (= -1)
+- cell size 8 bit (most common, alt. 16, 32, 64 bit)
+- . and , read / write data in bytes
+- data cell wraparound yes (most common)
+- data type unsigned char (byte)
+- source code is single file of ASCII text, filename ends with ".b"
+- input and output interspersed together in chronological order
+- input bytes will be held until they are requested by the program; bytes from the keyboard may also be line-buffered, i.e. they may not be available to the program until a newline has been typed
+-  if a program requests input from the keyboard and there is none available, the program will be paused until more input becomes available
+- output should be in a monospaced font
+-  i/o should be done during execution, so interactive programs work
+
+
+
+###  notes  ###
+To display the ASCII character "7" we must add 48 to the value 7.
+We use a loop to compute 48 = 6 * 8.
+[This is an initial comment loop. Its content is never executed because
+the cell at dp is zero at the beginning.]
+The easy way to match brackets is to use a stack: when a '[' is encountered, push its location on the stack; when a ']' is encountered, pop the location of the matching '[' off the stack. SP must not become negative.
+
+
+###  links  ###
+- http://esoteric.sange.fi/brainfuck/
+- http://www.muppetlabs.com/~breadbox/bf/standards.html
+- http://brainfuck.org/
+
